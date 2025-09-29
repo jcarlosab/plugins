@@ -16,6 +16,9 @@ function removeShorts() {
 }
 
 function initShortsBlocker() {
+    // Ejecutar la función inmediatamente para limpiar los shorts en la primera carga
+    removeShorts();
+
     // Observador para detectar cambios en el DOM
     const observer = new MutationObserver(() => {
         removeShorts();
@@ -26,9 +29,6 @@ function initShortsBlocker() {
         childList: true,
         subtree: true
     });
-
-    // Ejecutar la función inicialmente
-    removeShorts();
 }
 
 document.addEventListener('DOMContentLoaded', initShortsBlocker);
