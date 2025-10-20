@@ -27,4 +27,4 @@ Las contribuciones son bienvenidas. Por favor, abre un issue para discutir los c
 
 ## Licencia
 
-MIT 
+GNU GPLv3
