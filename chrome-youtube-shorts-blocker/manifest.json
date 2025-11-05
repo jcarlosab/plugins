@@ -14,7 +14,7 @@
     }
   ],
   "icons": {
-    "48": "assets/images/icon48.png",
-    "128": "assets/images/icon128.png"
+	"48": "assets/images/shorts-blocker-logo-48px.png",
+    "128": "assets/images/shorts-blocker-logo-128px.png"
   }
 } 
