@@ -125,12 +125,6 @@ startObserver();
 
 // Monitor navigation
 document.addEventListener('yt-navigate-finish', () => {
-    // Aggressively clean up stale playlist from previous video
-    const stalePlaylist = document.querySelector('#below #playlist');
-    if (stalePlaylist) {
-        stalePlaylist.remove();
-    }
-
     updateBodyClasses();
     markShortsShelves();
     movePlaylist();
@@ -177,8 +171,10 @@ function movePlaylist() {
                     if (/NaN\s*\/\s*NaN/.test(currentText)) {
                         playlist.style.setProperty('display', 'none', 'important');
                     } else {
-                        // If it fixed itself, show it?
-                        // playlist.style.display = '';
+                        // If it fixed itself, show it!
+                        if (playlist.style.display === 'none') {
+                            playlist.style.display = '';
+                        }
                     }
                 });
                 textObserver.observe(playlist, {
