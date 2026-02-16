@@ -2,8 +2,14 @@
 body.yf-block-shorts ytd-reel-shelf-renderer,
 body.yf-block-shorts ytd-rich-section-renderer:has(ytd-reel-shelf-renderer),
 body.yf-block-shorts ytd-mini-guide-entry-renderer:has(a[href="/shorts"]),
+body.yf-block-shorts ytd-mini-guide-entry-renderer:has(a[title="Shorts"]),
+body.yf-block-shorts ytd-mini-guide-entry-renderer:has(a[title="Cortos"]),
 body.yf-block-shorts ytd-guide-entry-renderer:has(a[href="/shorts"]),
+body.yf-block-shorts ytd-guide-entry-renderer:has(a[title="Shorts"]),
+body.yf-block-shorts ytd-guide-entry-renderer:has(a[title="Cortos"]),
 body.yf-block-shorts a[href="/shorts"],
+body.yf-block-shorts a[title="Shorts"],
+body.yf-block-shorts a[title="Cortos"],
 body.yf-block-shorts .yf-marked-shorts-shelf {
     display: none !important;
 }

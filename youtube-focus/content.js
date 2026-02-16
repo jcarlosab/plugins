@@ -74,10 +74,34 @@ function hideShortsSidebar() {
     const terms = ['shorts', 'cortos']; // Multilanguage support just in case
 
     // Desktop Sidebar
-    document.querySelectorAll('ytd-guide-entry-renderer, ytd-mini-guide-entry-renderer').forEach(entry => {
-        const text = entry.textContent?.trim().toLowerCase();
-        if (text && terms.some(term => text === term)) {
-            entry.style.display = 'none';
+    // Desktop Sidebar (Expanded and Mini)
+    // We target the specific title element to avoid hiding things that just contain the word "shorts" in a video title etc.
+    const selectors = [
+        'ytd-guide-entry-renderer',
+        'ytd-mini-guide-entry-renderer'
+    ];
+
+    document.querySelectorAll(selectors.join(',')).forEach(entry => {
+        // Look for the title specifically. 
+        // In mini guide: .title
+        // In expanded guide: .title
+        const titleElement = entry.querySelector('.title, yt-formatted-string');
+        if (titleElement) {
+            const text = titleElement.textContent?.trim().toLowerCase();
+            if (text && terms.some(term => text === term)) {
+                entry.style.display = 'none';
+            }
+        } else {
+            // Fallback for when title element isn't easily found (e.g. icon only mode might rely on aria-label or tooltip, 
+            // but usually there's a title element even if hidden or inside a tooltip structure)
+            // Let's check the anchor tag title as well
+            const link = entry.querySelector('a');
+            if (link) {
+                const titleAttr = link.getAttribute('title')?.trim().toLowerCase();
+                if (titleAttr && terms.some(term => titleAttr === term)) {
+                    entry.style.display = 'none';
+                }
+            }
         }
     });
 
