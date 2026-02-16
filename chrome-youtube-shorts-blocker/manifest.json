@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Focus",
+  "version": "1.2.1",
+  "description": "Personaliza tu experiencia en YouTube: Bloquea Shorts, comentarios y recomendaciones.",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "48": "assets/images/ico-48px.png",
+      "128": "assets/images/ico-128px.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.youtube.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "styles.css"
+      ]
+    }
+  ],
+  "icons": {
+    "48": "assets/images/ico-48px.png",
+    "128": "assets/images/ico-128px.png"
+  }
+}

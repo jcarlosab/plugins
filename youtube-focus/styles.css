@@ -19,6 +19,11 @@ body.yf-hide-secondary #secondary {
     display: none !important;
 }
 
+/* Excepción para pantalla completa: Mostrar secondary (que contiene la playlist restaurada) */
+body.yf-fullscreen-active #secondary {
+    display: block !important;
+}
+
 /* Permitir que la playlist se vea si la movemos fuera o si hacemos una excepción */
 body.yf-hide-secondary #playlist {
     display: block !important;

@@ -63,6 +63,31 @@ function markShortsShelves() {
     document.querySelectorAll('ytd-reel-shelf-renderer').forEach(el => {
         el.classList.add('yf-marked-shorts-shelf');
     });
+
+    hideShortsSidebar();
+}
+
+// Aggressively hide Shorts from sidebar (JS backup for CSS)
+function hideShortsSidebar() {
+    if (!SETTINGS.blockShorts) return;
+
+    const terms = ['shorts', 'cortos']; // Multilanguage support just in case
+
+    // Desktop Sidebar
+    document.querySelectorAll('ytd-guide-entry-renderer, ytd-mini-guide-entry-renderer').forEach(entry => {
+        const text = entry.textContent?.trim().toLowerCase();
+        if (text && terms.some(term => text === term)) {
+            entry.style.display = 'none';
+        }
+    });
+
+    // Mobile/Responsive "Bottom Bar" or other navs
+    document.querySelectorAll('ytm-pivot-bar-item-renderer, ytd-pivot-bar-item-renderer').forEach(item => {
+        const text = item.textContent?.trim().toLowerCase();
+        if (text && terms.some(term => text === term)) {
+            item.style.display = 'none';
+        }
+    });
 }
 
 // Run the marker logic periodically or on mutation
@@ -100,28 +125,90 @@ startObserver();
 
 // Monitor navigation
 document.addEventListener('yt-navigate-finish', () => {
+    // Aggressively clean up stale playlist from previous video
+    const stalePlaylist = document.querySelector('#below #playlist');
+    if (stalePlaylist) {
+        stalePlaylist.remove();
+    }
+
     updateBodyClasses();
     markShortsShelves();
     movePlaylist();
 });
 
+// Resizing can trigger YouTube to re-render or move elements, potentially showing NaN states
+window.addEventListener('resize', () => {
+    if (SETTINGS.hideSecondary) {
+        movePlaylist();
+    }
+});
+
 function movePlaylist() {
     // Only move if we are hiding secondary content, otherwise let it be (or move back? complex to move back without placeholder)
-    // For now, let's just move it if it exists in secondary and we want to save it
     if (SETTINGS.hideSecondary) {
-        const playlist = document.querySelector('#secondary #playlist');
+        // Try to find playlist in secondary OR already moved to below
+        let playlist = document.querySelector('#secondary #playlist') || document.querySelector('#below #playlist');
         const below = document.querySelector('#below');
         const comments = document.querySelector('#comments');
 
-        if (playlist && below) {
-            // Move playlist to #below, before comments if possible
-            if (comments && below.contains(comments)) {
-                below.insertBefore(playlist, comments);
+        if (playlist) {
+            // Check validity
+            // User reports "NaN / NaN". This suggests broken data binding or empty list.
+            const text = playlist.textContent || "";
+            // Regex for NaN / NaN with optional spaces
+            const isInvalid = /NaN\s*\/\s*NaN/.test(text) || text.trim().length === 0;
+
+            if (isInvalid) {
+                playlist.style.setProperty('display', 'none', 'important');
+                // If it's invalid and in #below, it might be stale.
+                return;
             } else {
-                below.appendChild(playlist);
+                // Only unhide if it was hidden by us AND is now valid
+                if (playlist.style.display === 'none') {
+                    playlist.style.display = '';
+                }
             }
-            playlist.style.marginBottom = '20px'; // Add some spacing
+
+            // If valid (so far), observe it for future text changes (e.g. data binding updates)
+            if (!playlist.dataset.yfObserved) {
+                playlist.dataset.yfObserved = 'true';
+                const textObserver = new MutationObserver(() => {
+                    const currentText = playlist.textContent || "";
+                    if (/NaN\s*\/\s*NaN/.test(currentText)) {
+                        playlist.style.setProperty('display', 'none', 'important');
+                    } else {
+                        // If it fixed itself, show it?
+                        // playlist.style.display = '';
+                    }
+                });
+                textObserver.observe(playlist, {
+                    subtree: true,
+                    characterData: true,
+                    childList: true
+                });
+            }
+
+            if (!below) return;
+
+            // Move logic: if it's not already in #below
+            if (playlist.parentElement.id !== 'below') {
+                if (comments && below.contains(comments)) {
+                    below.insertBefore(playlist, comments);
+                } else {
+                    below.appendChild(playlist);
+                }
+                playlist.style.marginBottom = '20px'; // Add some spacing
+            }
         }
+    }
+
+    // Check for stale duplicate playlists
+    const belowPlaylist = document.querySelector('#below #playlist');
+    const secondaryPlaylist = document.querySelector('#secondary #playlist');
+
+    // If we have one in secondary AND one in below, the below one is definitely stale/duplicate. Remove it.
+    if (belowPlaylist && secondaryPlaylist && belowPlaylist !== secondaryPlaylist) {
+        belowPlaylist.remove();
     }
 }
 
@@ -146,3 +233,43 @@ function startPlaylistObserver() {
 }
 
 startPlaylistObserver();
+
+function handleFullscreen() {
+    const isFullscreen = !!document.fullscreenElement;
+    const body = document.body;
+
+    if (isFullscreen) {
+        body.classList.add('yf-fullscreen-active');
+
+        // Restore playlist to secondary if it was moved
+        const playlist = document.querySelector('#below #playlist');
+        const secondary = document.querySelector('#secondary');
+
+        if (playlist && secondary) {
+            // Remove styles added by us
+            playlist.style.marginBottom = '';
+            // If we hid it due to NaN check but now want to show it (or let YouTube handle it)
+            // playlist.style.display = ''; // careful, don't show broken ones? 
+            // If it's broken, keep it hidden?
+            // Let's assume native fullscreen needs it clean.
+
+            secondary.prepend(playlist);
+        }
+
+        // Disable our sidebar hiding in fullscreen to let native UI work (which usually hides sidebar anyway unless toggled)
+        body.classList.remove('yf-hide-secondary');
+
+    } else {
+        body.classList.remove('yf-fullscreen-active');
+
+        // Restore settings
+        updateBodyClasses();
+
+        // Move playlist back to below if settings enabled
+        if (SETTINGS.hideSecondary) {
+            movePlaylist();
+        }
+    }
+}
+
+document.addEventListener('fullscreenchange', handleFullscreen);
