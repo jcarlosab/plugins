@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Focus</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>YouTube Focus</h1>
+      <p>Personaliza tu experiencia</p>
+    </header>
+    
+    <div class="settings">
+      <div class="setting-item">
+        <label for="blockShorts">Bloquear Shorts</label>
+        <label class="switch">
+          <input type="checkbox" id="blockShorts">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      
+      <div class="setting-item">
+        <label for="hideComments">Ocultar Comentarios</label>
+        <label class="switch">
+          <input type="checkbox" id="hideComments">
+          <span class="slider round"></span>
+        </label>
+      </div>
+      
+      <div class="setting-item">
+        <label for="hideSecondary">Ocultar Recomendaciones</label>
+        <label class="switch">
+          <input type="checkbox" id="hideSecondary">
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </div>
+    
+    <footer>
+      <p>Cambios aplicados automáticamente</p>
+    </footer>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

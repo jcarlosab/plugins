@@ -1,6 +1,0 @@
-/* Ocultar elementos relacionados con shorts */
-ytd-rich-section-renderer:has(ytd-reel-shelf-renderer),
-ytd-mini-guide-entry-renderer:has(a[href="/shorts"]),
-a[href="/shorts"] {
-    display: none !important;
-} 

@@ -1,0 +1,37 @@
+/* Ocultar elementos relacionados con shorts */
+body.yf-block-shorts ytd-reel-shelf-renderer,
+body.yf-block-shorts ytd-rich-section-renderer:has(ytd-reel-shelf-renderer),
+body.yf-block-shorts ytd-mini-guide-entry-renderer:has(a[href="/shorts"]),
+body.yf-block-shorts ytd-guide-entry-renderer:has(a[href="/shorts"]),
+body.yf-block-shorts a[href="/shorts"],
+body.yf-block-shorts .yf-marked-shorts-shelf {
+    display: none !important;
+}
+
+/* Ocultar comentarios */
+body.yf-hide-comments #comments {
+    display: none !important;
+}
+
+/* Ocultar recomendaciones (sidebar) */
+body.yf-hide-secondary #related,
+body.yf-hide-secondary #secondary {
+    display: none !important;
+}
+
+/* Permitir que la playlist se vea si la movemos fuera o si hacemos una excepción */
+body.yf-hide-secondary #playlist {
+    display: block !important;
+}
+
+/* Estilos para la playlist cuando está movida abajo (solo si tenemos la clase activada) */
+body.yf-hide-secondary #below #playlist {
+    max-height: 500px;
+    overflow-y: auto;
+    border: 1px solid rgba(128, 128, 128, 0.2);
+    border-radius: 12px;
+    margin-bottom: 24px;
+    padding: 8px;
+    /* Asegurar que el scroll se vea bien */
+    scrollbar-width: thin;
+}
