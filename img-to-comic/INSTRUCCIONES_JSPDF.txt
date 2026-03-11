@@ -1,0 +1,12 @@
+INSTRUCCIONES PARA JSPDF
+=========================
+
+En Manifest V3 (la versión actual y segura para extensiones de Chrome), las políticas de seguridad (CSP - Content Security Policy) prohíben estrictamente la ejecución de código Javascript alojado remotamente. Esto significa que ya no puedes usar `<script src="https://cdnjs.../jspdf.min.js">` dentro del popup.html.
+
+Para hacer que la extensión funcione, debes disponer localmente de la librería "jspdf". 
+
+Pasos a seguir:
+1. Entra a este enlace: https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js
+2. Haz clic derecho y selecciona "Guardar como...".
+3. Guarda el archivo dentro de esta misma carpeta "ImageToPDF" y asegúrate de que el nombre sea "jspdf.umd.min.js".
+4. También puedes usar un ícono propio "icon.png" dentro de esta carpeta.

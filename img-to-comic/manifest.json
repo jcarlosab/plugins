@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "ImgToComic: Web Image to PDF/CBZ",
+  "version": "1.0",
+  "description": "Extrae, selecciona y empaqueta las imágenes de cualquier web en PDF o formato Cómic (CBZ).",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "downloads",
+    "declarativeNetRequest"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "declarative_net_request": {
+    "rule_resources": [{
+      "id": "ruleset_1",
+      "enabled": true,
+      "path": "rules.json"
+    }]
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  },
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  }
+}

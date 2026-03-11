@@ -1,0 +1,13 @@
+INSTRUCCIONES PARA AÑADIR SOPORTE CBZ/ZIP
+=========================================
+
+Para poder crear archivos CBZ (que internamente son archivos ZIP con imágenes, estándar para lectura de cómics), necesitamos una librería llamada JSZip. 
+
+Al igual que con jsPDF, debido a las restricciones de Manifest V3, no podemos cargarla remotamente.
+
+Pasos a seguir:
+1. Entra a este enlace: https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js
+2. Haz clic derecho y selecciona "Guardar como...".
+3. Guarda el archivo dentro de esta misma carpeta "ImageToPDF" y asegúrate de que el nombre sea "jszip.min.js".
+
+Una vez descargado, la extensión será capaz de empaquetar tus imágenes seleccionadas en un formato Comic Book Archive (.cbz).

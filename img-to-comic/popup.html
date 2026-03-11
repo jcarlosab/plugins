@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Image to Comic</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      width: 400px;
+      padding: 15px;
+      margin: 0;
+      background-color: #f2f4f8;
+      color: #202D50;
+    }
+    h3 { text-align: center; margin-top: 0; color: #202D50; font-weight: 800; font-size: 22px; }
+    h3 span { color: #CE3237; }
+    button {
+      width: 100%; padding: 10px; background-color: #202D50; color: white;
+      border: none; cursor: pointer; border-radius: 6px; font-weight: bold;
+      margin-bottom: 10px; transition: background-color 0.2s;
+    }
+    button:hover { background-color: #2d3e6d; }
+    button:disabled { background-color: #9aa1bc; cursor: not-allowed; }
+    
+    #extractBtn { background-color: #202D50; }
+    #extractBtn:hover { background-color: #2d3e6d; }
+
+    #generatePdfBtn { background-color: #CE3237; color: white; }
+    #generatePdfBtn:hover { background-color: #b32a2f; }
+    #generatePdfBtn:disabled { background-color: #e59798; }
+    
+    .btn-secondary { background-color: #F6C121; color: #202D50; }
+    .btn-secondary:hover { background-color: #dfad18; }
+    
+    #gallery-view { display: none; }
+    .header-actions {
+      display: flex; justify-content: space-between; margin-bottom: 10px; gap: 10px;
+    }
+    .header-actions button { margin-bottom: 0; }
+    
+    #image-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+      max-height: 300px; overflow-y: auto;
+      padding: 5px; background: white; border: 1px solid #dcdde3; border-radius: 6px;
+      margin-bottom: 10px;
+    }
+    
+    /* Image items */
+    .img-container {
+      position: relative; width: 100%; padding-top: 100%; /* square ratio */
+      border-radius: 4px; overflow: hidden; background: #e0e2eb; cursor: pointer;
+    }
+    .img-container img {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.4; transition: 0.2s; pointer-events: none;
+    }
+    .img-container.selected img { opacity: 1; }
+    .img-container::after {
+      content: ''; position: absolute; top: 4px; right: 4px; border-radius: 50%;
+      width: 16px; height: 16px; border: 2px solid white; box-shadow: 0 0 2px rgba(0,0,0,0.5);
+      background-color: transparent; transition: 0.2s;
+    }
+    .img-container.selected::after { background-color: #F6C121; border-color: #F6C121; }
+    
+    .format-selector { display: flex; justify-content: center; gap: 15px; margin-bottom: 10px; font-weight: 500; font-size: 14px; }
+    .format-selector label { cursor: pointer; display: flex; align-items: center; gap: 5px; }
+    
+    #progress-container { width: 100%; background-color: #e0e2eb; border-radius: 6px; margin-top: 10px; height: 12px; display: none; overflow: hidden; }
+    #progress-bar { width: 0%; height: 100%; background-color: #CE3237; transition: width 0.3s ease; }
+    #status { margin-top: 10px; font-size: 13px; text-align: center; color: #4e5772; min-height: 20px; font-weight: 500;}
+  </style>
+  <script src="jspdf.umd.min.js"></script>
+  <script src="jszip.min.js"></script>
+</head>
+<body>
+  <h3>Image to <span>Comic</span></h3>
+  
+  <div id="initial-view">
+    <button id="extractBtn">Buscar Imágenes en la Página</button>
+  </div>
+  
+  <div id="gallery-view">
+    <div class="format-selector">
+      <label><input type="radio" name="format" value="pdf"> Formato PDF</label>
+      <label><input type="radio" name="format" value="cbz" checked> Formato CBZ (Cómic)</label>
+    </div>
+    <div class="header-actions">
+      <button id="toggleAllBtn" class="btn-secondary">Deseleccionar Todas</button>
+      <button id="generateBtn">Crear Archivo (<span id="countSpan">0</span>)</button>
+    </div>
+    <div id="image-grid"></div>
+  </div>
+  
+  <div id="progress-container"><div id="progress-bar"></div></div>
+  <div id="status"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

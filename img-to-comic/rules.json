@@ -1,0 +1,25 @@
+[
+    {
+        "id": 1,
+        "priority": 1,
+        "action": {
+            "type": "modifyHeaders",
+            "requestHeaders": [
+                {
+                    "header": "Referer",
+                    "operation": "set",
+                    "value": "https://zonatmo.com/"
+                },
+                {
+                    "header": "Origin",
+                    "operation": "set",
+                    "value": "https://zonatmo.com"
+                }
+            ]
+        },
+        "condition": {
+            "urlFilter": "||img1tmo.com/*",
+            "resourceTypes": ["xmlhttprequest", "image"]
+        }
+    }
+]

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg1"
+   width="256.31024"
+   height="256"
+   viewBox="0 0 256.31024 256"
+   sodipodi:docname="icon.png"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:export-bgcolor="#ffffff00">
+    <inkscape:page
+       x="0"
+       y="0"
+       width="256.31024"
+       height="256"
+       id="page2"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
+  <g
+     inkscape:groupmode="layer"
+     inkscape:label="Image"
+     id="g1"
+     style="display:inline">
+    <rect
+       style="display:inline;fill:#1e2850;fill-opacity:1"
+       id="rect1"
+       width="256.31024"
+       height="256"
+       x="0"
+       y="0"
+       ry="38.778778" />
+    <path
+       style="display:none;fill:#dc3c3c;fill-opacity:1;stroke-width:0.31023"
+       d="M 31.953713,255.28395 C 22.092477,253.51503 13.322101,248.09117 7.4124334,240.10687 5.0119039,236.86362 3.2185809,233.38007 1.8611316,229.32339 -0.30543571,222.8487 -0.17330856,229.88824 -0.06852018,126.51435 0.01985923,39.327957 0.0613068,33.051906 0.56211275,31.023022 2.7870854,22.009124 6.7422561,15.340313 13.253562,9.6239778 18.063467,5.4013179 23.592142,2.6300053 30.712792,0.87233627 32.741735,0.37150941 39.025374,0.3300795 126.35928,0.24170977 229.90472,0.13693628 222.8484,0.0046936 229.32339,2.1713619 c 13.74491,4.5993355 23.508,16.0079961 25.98594,30.3658911 0.41996,2.433384 0.47549,13.578706 0.47549,95.432717 0,81.85401 -0.0555,92.99933 -0.47549,95.43271 -1.70233,9.86378 -6.98183,18.67205 -14.6755,24.48446 -3.19189,2.41141 -8.39391,5.10413 -11.93037,6.1755 -6.05101,1.83315 0.42311,1.72471 -101.16192,1.69434 -79.440638,-0.0238 -93.470251,-0.0932 -95.587827,-0.47303 z"
+       id="path1" />
+    <g
+       id="g8"
+       transform="translate(0,4.9636836)">
+      <rect
+         style="fill:#ffc832;fill-opacity:1"
+         id="rect2"
+         width="15.511505"
+         height="50.25729"
+         x="120.24425"
+         y="86.244011"
+         rx="0"
+         ry="4.9636836" />
+      <path
+         sodipodi:type="star"
+         style="fill:#ffc832;fill-opacity:1"
+         id="path8"
+         inkscape:flatsided="true"
+         sodipodi:sides="3"
+         sodipodi:cx="128"
+         sodipodi:cy="136.5013"
+         sodipodi:r1="20.785425"
+         sodipodi:r2="10.392713"
+         sodipodi:arg1="1.5707963"
+         sodipodi:arg2="2.6179939"
+         inkscape:rounded="0.18"
+         inkscape:randomized="0"
+         d="m 128,157.28672 c -6.48025,0 -21.24083,-25.56607 -18.00071,-31.17814 3.24013,-5.61206 32.76129,-5.61206 36.00142,0 3.24012,5.61207 -11.52046,31.17814 -18.00071,31.17814 z"
+         inkscape:transform-center-y="5.1963563" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:64px;font-family:Rubik;-inkscape-font-specification:'Rubik, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#dc3c3c;fill-opacity:1;stroke-width:1;stroke-dasharray:none"
+       x="22.59198"
+       y="222.82454"
+       id="text9"><tspan
+         sodipodi:role="line"
+         id="tspan9"
+         x="22.59198"
+         y="222.82454"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:64px;font-family:Rubik;-inkscape-font-specification:'Rubik, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">COMIC</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:64px;font-family:Rubik;-inkscape-font-specification:'Rubik, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;fill:#fef9f9;fill-opacity:1;stroke-width:1;stroke-dasharray:none"
+       x="24.287903"
+       y="75.433609"
+       id="text10"><tspan
+         sodipodi:role="line"
+         id="tspan10"
+         x="24.287903"
+         y="75.433609">IMAGE</tspan></text>
+  </g>
+</svg>
